@@ -29,19 +29,19 @@ npm run preview
 ```
 src/
 ├── context/
-│   ├── ThemeContext.jsx     # Light/dark mode, persisted to localStorage
-│   └── InvoiceContext.jsx   # All invoice state (CRUD, filter), persisted to localStorage
+│   ├── ThemeContext.jsx      Light/dark mode, persisted to localStorage
+│   └── InvoiceContext.jsx    All invoice state (CRUD, filter), persisted to localStorage
 ├── components/
-│   ├── Sidebar.jsx          # Navigation + theme toggle
-│   ├── StatusBadge.jsx      # Paid / Pending / Draft pill
-│   ├── Filter.jsx           # Dropdown checkbox filter
-│   ├── InvoiceForm.jsx      # Slide-in create/edit form with full validation
-│   └── DeleteModal.jsx      # Confirmation modal
+│   ├── Sidebar.jsx           Navigation + theme toggle
+│   ├── StatusBadge.jsx       Paid / Pending / Draft pill
+│   ├── Filter.jsx            Dropdown checkbox filter
+│   ├── InvoiceForm.jsx       Slide-in create/edit form with full validation
+│   └── DeleteModal.jsx       Confirmation modal
 ├── pages/
-│   ├── InvoiceList.jsx      # Homepage — invoice list + empty state
-│   └── InvoiceDetail.jsx    # Full invoice view + actions
+│   ├── InvoiceList.jsx       Homepage — invoice list + empty state
+│   └── InvoiceDetail.jsx     Full invoice view + actions
 └── utils/
-    └── formatters.js        # Currency (GBP) and date formatting
+    └── formatters.js         Currency (GBP) and date formatting
 ```
 
 ### State Management
