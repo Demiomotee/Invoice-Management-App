@@ -20,43 +20,50 @@ export default function Sidebar() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <nav
-      className="
-        w-[103px] bg-[#373B53] flex flex-col items-center justify-between
-        sticky top-0 h-screen z-50 flex-shrink-0 rounded-r-[20px]
-        md:w-20 
-        max-md:w-full max-md:h-[72px] max-md:flex-row max-md:rounded-none max-md:rounded-b-[20px]
-      "
-      aria-label="Main navigation"
-    >
+    <>
+ 
+      <nav
+        className="hidden lg:flex flex-col items-center justify-between w-[103px] bg-[#373B53] rounded-r-[20px] sticky top-0 h-screen z-50 flex-shrink-0"
+        aria-label="Main navigation"
+      >
+        <div className="flex items-center justify-center w-full pt-2">
+          <div className="w-[103px] h-[103px] bg-purple rounded-r-[20px] flex items-center justify-center relative overflow-hidden flex-shrink-0">
+            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-purple-light rounded-tl-[20px]" />
+            <svg width="28" height="26" viewBox="0 0 28 26" fill="none" className="relative z-10" aria-hidden="true">
+              <path d="M0 0h28v22l-14 4L0 22V0z" fill="white" opacity="0.9" />
+            </svg>
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-6 pb-6">
+          <button onClick={toggleTheme} className="flex items-center justify-center w-10 h-10 rounded-full hover:opacity-70 transition-opacity" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+          <div className="w-full h-px bg-[#494E6E]" role="separator" />
+          <div className="w-9 h-9 rounded-full bg-[#7E88C3] flex items-center justify-center text-white text-xs font-bold border-2 border-transparent hover:border-white transition-colors cursor-pointer">AB</div>
+        </div>
+      </nav>
 
-      <div className="flex items-center justify-center py-7 max-md:py-0 max-md:px-7">
-        <div className="w-16 h-16 bg-purple rounded-[20px] flex items-center justify-center relative overflow-hidden max-md:w-[72px] max-md:h-[72px] max-md:rounded-none max-md:rounded-br-[20px]">
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-purple-light rounded-t-[20px]" />
-          <svg width="28" height="26" viewBox="0 0 28 26" fill="none" className="relative z-10" aria-hidden="true">
+
+      <nav
+        className="lg:hidden fixed top-0 left-0 right-0 h-[72px] bg-[#373B53] z-50 flex items-center justify-between"
+        aria-label="Main navigation"
+      >
+
+        <div className="w-[72px] h-[72px] bg-purple flex items-center justify-center relative overflow-hidden rounded-br-[20px] flex-shrink-0">
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-purple-light rounded-tl-[20px]" />
+          <svg width="22" height="20" viewBox="0 0 28 26" fill="none" className="relative z-10" aria-hidden="true">
             <path d="M0 0h28v22l-14 4L0 22V0z" fill="white" opacity="0.9" />
           </svg>
         </div>
-      </div>
 
-      <div className="flex flex-col items-center gap-6 pb-6 max-md:flex-row max-md:pb-0 max-md:pr-7">
-        <button
-          onClick={toggleTheme}
-          className="flex items-center justify-center w-11 h-11 rounded-full hover:opacity-70 transition-opacity"
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        >
-          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-        </button>
-
-        <div className="w-full h-px bg-[#494E6E] max-md:w-px max-md:h-10" role="separator" />
-
-        <div
-          className="w-10 h-10 rounded-full bg-gray-3 flex items-center justify-center text-white text-xs font-bold border-2 border-transparent hover:border-white transition-colors cursor-pointer"
-          aria-label="User profile"
-        >
-          AB
+        <div className="flex items-center h-full">
+          <button onClick={toggleTheme} className="px-6 flex items-center justify-center h-full hover:opacity-70 transition-opacity" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+          <div className="w-px h-full bg-[#494E6E]" role="separator" />
+          <div className="w-8 h-8 mx-6 rounded-full bg-[#7E88C3] flex items-center justify-center text-white text-xs font-bold border-2 border-transparent hover:border-white transition-colors cursor-pointer">AB</div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   )
 }
