@@ -40,7 +40,6 @@ export default function InvoiceList() {
         </div>
       </header>
 
-
       {filteredInvoices.length === 0 ? (
         <div className="flex flex-col items-center pt-16 text-center" role="status">
           <svg width="242" height="200" viewBox="0 0 242 200" fill="none" aria-hidden="true">
