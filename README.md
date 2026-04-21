@@ -1,10 +1,14 @@
 # Invoice App
 
-A fully responsive Invoice Management Application built with React, faithfully implementing the Frontend Mentor Figma design.
+A fully responsive Invoice Management Application built with React + TypeScript + Tailwind CSS, implementing the Frontend Mentor Invoice App design.
 
 ## Live Demo
 
-[Deploy to Vercel/Netlify and paste URL here]
+**[demiomotee.github.io/Invoice-Management-App](https://demiomotee.github.io/Invoice-Management-App/)**
+
+## Repository
+
+**[github.com/Demiomotee/Invoice-Management-App](https://github.com/Demiomotee/Invoice-Management-App)**
 
 ## Setup Instructions
 
