@@ -1,4 +1,4 @@
-export function formatCurrency(amount) {
+export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency: 'GBP',
@@ -6,7 +6,7 @@ export function formatCurrency(amount) {
   }).format(amount)
 }
 
-export function formatDate(dateString) {
+export function formatDate(dateString: string): string {
   if (!dateString) return ''
   const date = new Date(dateString)
   return new Intl.DateTimeFormat('en-GB', {
@@ -14,9 +14,4 @@ export function formatDate(dateString) {
     month: 'short',
     year: 'numeric',
   }).format(date)
-}
-
-export function toInputDate(dateString) {
-  if (!dateString) return ''
-  return dateString.split('T')[0]
 }
