@@ -18,27 +18,42 @@ export default function InvoiceList() {
       : `There ${count !== 1 ? 'are' : 'is'} ${count} ${filter} invoice${count !== 1 ? 's' : ''}`
 
   return (
-    <div className="max-w-[780px] mx-auto px-6 py-16 md:py-14 md:px-12">
+    <div className="max-w-[780px] mx-auto px-6 py-8 md:py-12 lg:py-[72px] md:px-12">
 
-      <header className="flex items-center justify-between mb-14 gap-4">
+
+      <header className="flex items-center justify-between mb-8 md:mb-14 gap-4">
         <div>
-          <h1 className="text-[32px] font-bold text-dark-1 dark:text-white tracking-tight leading-none">Invoices</h1>
-          <p className="text-[13px] text-gray-2 mt-1.5">{subtitle}</p>
+          <h1 className="text-2xl md:text-[36px] font-bold text-dark-1 dark:text-white tracking-tight leading-none">
+            Invoices
+          </h1>
+          <p className="text-[13px] text-gray-2 mt-1.5 md:hidden">
+            {count} invoice{count !== 1 ? 's' : ''}
+          </p>
+
+          <p className="text-[13px] text-gray-2 mt-1.5 hidden md:block">
+            {subtitle}
+          </p>
         </div>
-        <div className="flex items-center gap-10">
+
+        <div className="flex items-center gap-4 md:gap-10">
           <Filter />
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-4 bg-purple hover:bg-purple-light transition-colors text-white rounded-3xl pl-2 pr-4 py-2 text-xs font-bold"
+            className="flex items-center gap-2 md:gap-4 bg-purple hover:bg-purple-light transition-colors text-white rounded-3xl pl-2 pr-3 md:pr-4 py-2 text-xs font-bold"
             aria-label="Create new invoice"
           >
             <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-              <svg width="11" height="11" viewBox="0 0 11 11"><path d="M6.313 10.313V6.313h4V4.687h-4V.687H4.687v4H.687v1.626h4v4h1.626z" fill="#7C5DFA" /></svg>
+              <svg width="11" height="11" viewBox="0 0 11 11">
+                <path d="M6.313 10.313V6.313h4V4.687h-4V.687H4.687v4H.687v1.626h4v4h1.626z" fill="#7C5DFA" />
+              </svg>
             </span>
-            New <span className="hidden sm:inline">Invoice</span>
+            <span>
+              New <span className="hidden sm:inline">Invoice</span>
+            </span>
           </button>
         </div>
       </header>
+
 
       {filteredInvoices.length === 0 ? (
         <div className="flex flex-col items-center pt-16 text-center" role="status">
@@ -50,7 +65,9 @@ export default function InvoiceList() {
             <rect x="100" y="98" width="42" height="4" rx="2" fill="#888EB0" opacity="0.3" />
             <rect x="100" y="108" width="36" height="4" rx="2" fill="#888EB0" opacity="0.3" />
           </svg>
-          <h2 className="text-xl font-bold text-dark-1 dark:text-white tracking-tight mt-10 mb-6">There is nothing here</h2>
+          <h2 className="text-xl font-bold text-dark-1 dark:text-white tracking-tight mt-10 mb-6">
+            There is nothing here
+          </h2>
           <p className="text-[13px] text-gray-2 leading-relaxed max-w-[220px]">
             {filter === 'all'
               ? 'Create an invoice by clicking the New Invoice button and get started.'
@@ -61,36 +78,47 @@ export default function InvoiceList() {
         <ul className="flex flex-col gap-4" role="list" aria-label="Invoice list">
           {filteredInvoices.map((invoice, i) => (
             <li key={invoice.id} style={{ animationDelay: `${i * 40}ms` }} className="animate-[slideUp_0.2s_ease_both]">
+
               <Link
                 to={`/invoice/${invoice.id}`}
-                className="
-                  grid items-center gap-5
-                  grid-cols-[80px_1fr_auto_auto_auto_auto]
-                  max-md:grid-cols-2 max-md:grid-rows-3
-                  bg-white dark:bg-dark-2 rounded-invoice px-8 py-7 max-md:p-6
-                  border border-transparent hover:border-purple transition-colors
-                  shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)]
-                  no-underline
-                "
+                className="block bg-white dark:bg-dark-2 rounded-invoice p-6 border border-transparent hover:border-purple transition-colors shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] no-underline md:hidden"
                 aria-label={`Invoice ${invoice.id}, ${invoice.clientName}, due ${formatDate(invoice.paymentDue)}, ${formatCurrency(invoice.total)}, status: ${invoice.status}`}
               >
-                <span className="text-xs font-bold text-dark-1 dark:text-white max-md:row-start-1 max-md:col-start-1">
+
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xs font-bold text-dark-1 dark:text-white">
+                    <span className="text-purple">#</span>{invoice.id}
+                  </span>
+                  <span className="text-[13px] text-gray-2">{invoice.clientName}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[13px] text-gray-2 mb-2">Due {formatDate(invoice.paymentDue)}</p>
+                    <p className="text-base font-bold text-dark-1 dark:text-white">{formatCurrency(invoice.total)}</p>
+                  </div>
+                  <StatusBadge status={invoice.status} />
+                </div>
+              </Link>
+
+
+              <Link
+                to={`/invoice/${invoice.id}`}
+                className="hidden md:grid items-center gap-5 grid-cols-[100px_1fr_auto_auto_auto_24px] bg-white dark:bg-dark-2 rounded-invoice px-8 py-5 border border-transparent hover:border-purple transition-colors shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] no-underline"
+                aria-label={`Invoice ${invoice.id}, ${invoice.clientName}, due ${formatDate(invoice.paymentDue)}, ${formatCurrency(invoice.total)}, status: ${invoice.status}`}
+              >
+                <span className="text-xs font-bold text-dark-1 dark:text-white">
                   <span className="text-purple">#</span>{invoice.id}
                 </span>
-                <span className="text-[11px] text-gray-2 max-md:row-start-2 max-md:col-start-1">
-                  Due {formatDate(invoice.paymentDue)}
-                </span>
-                <span className="text-[11px] text-gray-2 text-right max-md:row-start-1 max-md:col-start-2 max-md:text-right">
-                  {invoice.clientName}
-                </span>
-                <span className="text-base font-bold text-dark-1 dark:text-white text-right max-md:row-start-3 max-md:col-start-1 max-md:text-left">
-                  {formatCurrency(invoice.total)}
-                </span>
+                <span className="text-[13px] text-gray-2">Due {formatDate(invoice.paymentDue)}</span>
+                <span className="text-[13px] text-gray-2">{invoice.clientName}</span>
+                <span className="text-base font-bold text-dark-1 dark:text-white text-right">{formatCurrency(invoice.total)}</span>
                 <StatusBadge status={invoice.status} />
-                <svg className="text-purple max-md:hidden" width="7" height="10" viewBox="0 0 7 10" fill="none" aria-hidden="true">
+                <svg width="7" height="10" viewBox="0 0 7 10" fill="none" aria-hidden="true">
                   <path d="M1 1L5 5L1 9" stroke="#7C5DFA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
+
             </li>
           ))}
         </ul>
