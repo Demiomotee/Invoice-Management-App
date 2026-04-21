@@ -50,20 +50,15 @@ export default function InvoiceDetail() {
         <BackArrow /> Go back
       </Link>
 
-
       <div className="flex items-center justify-between bg-white dark:bg-dark-2 rounded-invoice px-8 py-5 mb-6 shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
         <div className="flex items-center gap-4">
           <span className="text-[13px] text-gray-2">Status</span>
           <StatusBadge status={invoice.status} />
         </div>
-        <div className="hidden md:flex">
-          <ActionButtons />
-        </div>
+        <div className="hidden md:flex"><ActionButtons /></div>
       </div>
 
-
       <article className="bg-white dark:bg-dark-2 rounded-invoice p-12 max-md:p-6 shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
-
         <div className="flex justify-between mb-8 max-md:flex-col max-md:gap-7">
           <div>
             <p className="text-base font-bold text-dark-1 dark:text-white tracking-tight">
@@ -78,7 +73,6 @@ export default function InvoiceDetail() {
             {invoice.senderAddress.country}
           </address>
         </div>
-
 
         <div className="grid grid-cols-3 gap-6 mb-12 max-md:grid-cols-2">
           <div className="flex flex-col gap-8">
@@ -112,11 +106,11 @@ export default function InvoiceDetail() {
             </thead>
             <tbody>
               {invoice.items.map((item, i) => (
-                <tr key={i} className="text-xs font-bold max-md:grid max-md:grid-cols-2 max-md:p-6 max-md:gap-2">
-                  <td className="text-dark-1 dark:text-white p-4 pl-8 max-md:col-span-2 max-md:p-0">{item.name}</td>
-                  <td className="text-gray-2 text-right p-4 max-md:text-left max-md:p-0">{item.quantity}</td>
-                  <td className="text-gray-2 text-right p-4 max-md:p-0 max-md:hidden">{formatCurrency(item.price)}</td>
-                  <td className="text-dark-1 dark:text-white text-right p-4 pr-8 max-md:p-0 max-md:text-right">{formatCurrency(item.total)}</td>
+                <tr key={i} className="text-xs font-bold">
+                  <td className="text-dark-1 dark:text-white p-4 pl-8">{item.name}</td>
+                  <td className="text-gray-2 text-right p-4">{item.quantity}</td>
+                  <td className="text-gray-2 text-right p-4">{formatCurrency(item.price)}</td>
+                  <td className="text-dark-1 dark:text-white text-right p-4 pr-8">{formatCurrency(item.total)}</td>
                 </tr>
               ))}
             </tbody>
@@ -127,7 +121,6 @@ export default function InvoiceDetail() {
           <p className="text-2xl font-bold text-white tracking-tight">{formatCurrency(invoice.total)}</p>
         </div>
       </article>
-
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-dark-2 px-6 py-5 flex justify-end gap-2 shadow-[-4px_0_20px_rgba(0,0,0,0.1)] z-50">
         <ActionButtons />
