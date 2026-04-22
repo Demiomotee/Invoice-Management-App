@@ -32,10 +32,7 @@ export default function Sidebar() {
           </button>
           <div className="w-full h-px bg-[#494E6E]" role="separator" />
           <div className="w-full h-[88px] flex items-center justify-center">
-            {/* To use your own avatar: import avatarImg from '../assets/avatar.jpg' and replace the div below with <img src={avatarImg} ... /> */}
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-purple-light transition-colors cursor-pointer bg-[#7E88C3] flex items-center justify-center">
-              <span className="text-white text-xs font-bold select-none">AB</span>
-            </div>
+            <img src={avatarImg} ... />
           </div>
         </div>
       </nav>
