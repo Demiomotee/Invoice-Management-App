@@ -75,7 +75,6 @@ export default function InvoiceDetail() {
           <span className="text-[13px] text-gray-2">Status</span>
           <StatusBadge status={invoice.status} />
         </div>
-
         <div className="hidden md:flex">
           <ActionButtons />
         </div>
@@ -84,7 +83,7 @@ export default function InvoiceDetail() {
 
       <article className="bg-white dark:bg-dark-2 rounded-invoice p-6 md:p-8 lg:p-12 shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
 
-        
+
         <div className="flex flex-col md:flex-row md:justify-between gap-7 mb-8">
           <div>
             <p className="text-base font-bold text-dark-1 dark:text-white tracking-tight">
@@ -100,9 +99,8 @@ export default function InvoiceDetail() {
           </address>
         </div>
 
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 mb-10 md:mb-12">
 
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 mb-10 md:mb-12">
           <div className="flex flex-col gap-8">
             <div>
               <p className="text-[13px] text-gray-2 mb-2">Invoice Date</p>
@@ -113,7 +111,6 @@ export default function InvoiceDetail() {
               <p className="text-[15px] font-bold text-dark-1 dark:text-white">{formatDate(invoice.paymentDue)}</p>
             </div>
           </div>
-
 
           <div>
             <p className="text-[13px] text-gray-2 mb-3">Bill To</p>
@@ -126,14 +123,13 @@ export default function InvoiceDetail() {
             </address>
           </div>
 
-          
           <div className="col-span-2 md:col-span-1">
             <p className="text-[13px] text-gray-2 mb-2">Sent To</p>
             <p className="text-[15px] font-bold text-dark-1 dark:text-white break-all">{invoice.clientEmail}</p>
           </div>
         </div>
 
-        
+
         <div className="bg-[#F9FAFE] dark:bg-dark-3 rounded-t-invoice">
           <div className="hidden md:grid grid-cols-[1fr_64px_120px_120px] gap-4 px-8 pt-8 pb-4 text-[13px] text-gray-2">
             <span>Item Name</span>
