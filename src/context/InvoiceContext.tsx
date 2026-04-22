@@ -29,7 +29,7 @@ export interface Invoice {
   total: number
 }
 
-type InvoiceFormData = Omit<Invoice, 'id' | 'paymentDue' | 'total' | 'status'>
+export type InvoiceFormData = Omit<Invoice, 'id' | 'paymentDue' | 'total' | 'status'>
 
 interface State {
   invoices: Invoice[]
