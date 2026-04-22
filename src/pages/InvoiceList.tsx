@@ -5,6 +5,7 @@ import StatusBadge from '../components/StatusBadge'
 import Filter from '../components/Filter'
 import InvoiceForm from '../components/InvoiceForm'
 import { formatCurrency, formatDate } from '../utils/formatters'
+import emptyStateImg from '../assets/empty-state.svg'
 
 export default function InvoiceList() {
   const { filteredInvoices, invoices, filter } = useInvoices()
@@ -33,7 +34,6 @@ export default function InvoiceList() {
             {subtitle}
           </p>
         </div>
-
         <div className="flex items-center gap-6 md:gap-10">
           <Filter />
           <button
@@ -43,10 +43,7 @@ export default function InvoiceList() {
           >
             <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
               <svg width="11" height="11" viewBox="0 0 11 11">
-                <path
-                  d="M6.313 10.313V6.313h4V4.687h-4V.687H4.687v4H.687v1.626h4v4h1.626z"
-                  fill="#7C5DFA"
-                />
+                <path d="M6.313 10.313V6.313h4V4.687h-4V.687H4.687v4H.687v1.626h4v4h1.626z" fill="#7C5DFA" />
               </svg>
             </span>
             New<span className="hidden sm:inline"> Invoice</span>
@@ -54,27 +51,27 @@ export default function InvoiceList() {
         </div>
       </header>
 
-
       {filteredInvoices.length === 0 ? (
-        <div className="flex flex-col items-center pt-16 text-center" role="status">
-          <svg width="242" height="200" viewBox="0 0 242 200" fill="none" aria-hidden="true">
-            <ellipse cx="121" cy="187.5" rx="121" ry="12.5" fill="#DFE3FA" opacity="0.3" />
-            <circle cx="121" cy="96" r="80" fill="white" className="dark:fill-dark-2" />
-            <path
-              d="M96 76h50a6 6 0 016 6v38a6 6 0 01-6 6H96a6 6 0 01-6-6V82a6 6 0 016-6z"
-              fill="#7C5DFA" opacity="0.15"
-            />
-            <rect x="100" y="88" width="32" height="4" rx="2" fill="#7C5DFA" opacity="0.3" />
-            <rect x="100" y="98" width="42" height="4" rx="2" fill="#888EB0" opacity="0.3" />
-            <rect x="100" y="108" width="36" height="4" rx="2" fill="#888EB0" opacity="0.3" />
-          </svg>
-          <h2 className="text-xl font-bold text-dark-1 dark:text-white tracking-tight mt-10 mb-6">
+        <div className="flex flex-col items-center pt-8 md:pt-16 text-center" role="status">
+          <img
+            src={emptyStateImg}
+            alt=""
+            aria-hidden="true"
+            className="w-[214px] h-[200px] object-contain"
+          />
+          <h2 className="text-xl font-bold text-dark-1 dark:text-white tracking-tight mt-10 mb-4">
             There is nothing here
           </h2>
-          <p className="text-[13px] text-gray-2 leading-relaxed max-w-[220px]">
-            {filter === 'all'
-              ? 'Create an invoice by clicking the New Invoice button and get started.'
-              : `No ${filter} invoices found. Try a different filter.`}
+          <p className="text-[13px] text-gray-2 leading-relaxed max-w-[230px]">
+            {filter === 'all' ? (
+              <>
+                Create an invoice by clicking the{' '}
+                <span className="font-bold text-dark-1 dark:text-white">New Invoice</span>{' '}
+                button and get started
+              </>
+            ) : (
+              `No ${filter} invoices found. Try a different filter.`
+            )}
           </p>
         </div>
       ) : (
@@ -86,75 +83,50 @@ export default function InvoiceList() {
               className="animate-[slideUp_0.2s_ease_both]"
             >
 
-
               <Link
                 to={`/invoice/${invoice.id}`}
                 className="flex flex-col bg-white dark:bg-dark-2 rounded-invoice p-6 border border-transparent hover:border-purple transition-colors shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] no-underline md:hidden"
                 aria-label={`Invoice ${invoice.id}, ${invoice.clientName}`}
               >
-
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-xs font-bold text-dark-1 dark:text-white">
                     <span className="text-purple">#</span>{invoice.id}
                   </span>
-                  <span className="text-[13px] text-gray-2">{invoice.clientName}</span>
+                  <span className="text-[13px] text-gray-2 truncate max-w-[160px]">
+                    {invoice.clientName}
+                  </span>
                 </div>
-
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="text-[13px] text-gray-2 mb-2">
-                      Due {formatDate(invoice.paymentDue)}
-                    </p>
-                    <p className="text-base font-bold text-dark-1 dark:text-white">
-                      {formatCurrency(invoice.total)}
-                    </p>
+                    <p className="text-[13px] text-gray-2 mb-2">Due {formatDate(invoice.paymentDue)}</p>
+                    <p className="text-base font-bold text-dark-1 dark:text-white">{formatCurrency(invoice.total)}</p>
                   </div>
                   <StatusBadge status={invoice.status} />
                 </div>
               </Link>
-
 
               <Link
                 to={`/invoice/${invoice.id}`}
                 className="hidden md:flex items-center bg-white dark:bg-dark-2 rounded-invoice px-8 py-[18px] border border-transparent hover:border-purple transition-colors shadow-[0_10px_20px_rgba(72,84,159,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] no-underline gap-4"
                 aria-label={`Invoice ${invoice.id}, ${invoice.clientName}`}
               >
-
                 <span className="w-[100px] text-xs font-bold text-dark-1 dark:text-white flex-shrink-0">
                   <span className="text-purple">#</span>{invoice.id}
                 </span>
-
-
                 <span className="w-[130px] text-[13px] text-gray-2 flex-shrink-0">
                   Due {formatDate(invoice.paymentDue)}
                 </span>
-
-
-                <span className="flex-1 text-[13px] text-gray-2">
+                <span className="flex-1 min-w-0 text-[13px] text-gray-2 truncate">
                   {invoice.clientName}
                 </span>
-
                 <span className="w-[120px] text-base font-bold text-dark-1 dark:text-white text-right flex-shrink-0">
                   {formatCurrency(invoice.total)}
                 </span>
-
-                <div className="w-[130px] flex justify-center flex-shrink-0">
-                  <StatusBadge status={invoice.status} />
-                </div>
-
-
-                <svg
-                  width="7" height="10" viewBox="0 0 7 10" fill="none"
-                  className="flex-shrink-0" aria-hidden="true"
-                >
-                  <path
-                    d="M1 1L5 5L1 9"
-                    stroke="#7C5DFA" strokeWidth="2"
-                    strokeLinecap="round" strokeLinejoin="round"
-                  />
+                <StatusBadge status={invoice.status} />
+                <svg width="7" height="10" viewBox="0 0 7 10" fill="none" className="flex-shrink-0" aria-hidden="true">
+                  <path d="M1 1L5 5L1 9" stroke="#7C5DFA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-
             </li>
           ))}
         </ul>
