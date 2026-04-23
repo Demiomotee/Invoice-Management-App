@@ -4,11 +4,11 @@ A fully responsive Invoice Management Application built with React + TypeScript 
 
 ## Live Demo
 
-**[demiomotee.github.io/Invoice-Management-App](https://demiomotee.github.io/Invoice-Management-App/)**
+**https://invoice-management-app-alpha.vercel.app**
 
 ## Repository
 
-**[github.com/Demiomotee/Invoice-Management-App](https://github.com/Demiomotee/Invoice-Management-App)**
+**https://github.com/Demiomotee/Invoice-Management-App**
 
 ## Setup Instructions
 
@@ -32,14 +32,20 @@ npm run preview
 
 ```
 src/
+├── assets
+│   ├── avatar.jpg
+│   ├── empty-state.svg
+│   └── logo.svg
 ├── context/
 │   ├── ThemeContext.tsx      Light/dark mode, persisted to localStorage
+│   ├── ToastContext.tsx 
 │   └── InvoiceContext.tsx    All invoice state (CRUD, filter), persisted to localStorage
 ├── components/
 │   ├── Sidebar.tsx           Navigation + theme toggle
 │   ├── StatusBadge.tsx       Paid / Pending / Draft pill
 │   ├── Filter.tsx            Dropdown checkbox filter
 │   ├── InvoiceForm.tsx       Slide-in create/edit form with full validation
+│   ├── Toast.tsx 
 │   └── DeleteModal.tsx       Confirmation modal
 ├── pages/
 │   ├── InvoiceList.tsx       Homepage — invoice list + empty state
