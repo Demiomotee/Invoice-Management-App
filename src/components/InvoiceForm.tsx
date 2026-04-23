@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { useInvoices, useTheme, useToast } from '../contexts'
+import { useInvoices } from '../context/InvoiceContext'
+import { useToast } from '../context/ToastContext'
 import type { Invoice, InvoiceItem, InvoiceFormData } from '../context/InvoiceContext'
 
 interface Props {
@@ -319,7 +320,6 @@ export default function InvoiceForm({ invoice, onClose }: Props) {
 
           <div className="flex flex-col gap-6 mb-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
 
               <Field label="Invoice Date" error={errors.createdAt} id="createdAt">
                 <div className="relative">
