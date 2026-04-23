@@ -106,3 +106,11 @@ React Router v6 with two routes:
 - Payment due date auto-calculated from invoice date + payment terms
 - Live item total calculation as user types
 - Form re-validates on every keystroke after first submission attempt
+
+---
+
+## Author
+
+**Demiomotee**
+https://github.com/Demiomotee
+
