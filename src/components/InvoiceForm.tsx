@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useInvoices } from '../context/InvoiceContext'
-import { useToast } from '../context/ToastContext'
+import { useInvoices, useTheme, useToast } from '../contexts'
 import type { Invoice, InvoiceItem, InvoiceFormData } from '../context/InvoiceContext'
 
 interface Props {
