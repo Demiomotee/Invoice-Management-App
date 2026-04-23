@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { useInvoices, useTheme, useToast } from '../contexts'
+import { useInvoices } from '../context/InvoiceContext'
+import { useToast } from '../context/ToastContext'
 import StatusBadge from '../components/StatusBadge'
 import DeleteModal from '../components/DeleteModal'
 import InvoiceForm from '../components/InvoiceForm'
